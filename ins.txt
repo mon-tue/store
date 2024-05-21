@@ -1,0 +1,15 @@
+Procedure:
+1. Open Virtual Box and create a new VM with Linux.
+2. Install OpenJDK and create a Java program
+3. Take a snapshot of the VM and copy the VDI onto a pen drive
+4. Use the pen drive in a different machine and instantiate the VM from the snapshot taken
+5. Execute the Java program in the new machine
+
+Near vm ->snapshot
+
+Ls
+touch testfile
+Vi testfile
+Sudo init 0
+
+sudo apt install openjdk-11-jdk
