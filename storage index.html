@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Upload to Firebase</title>
+</head>
+<body>
+    <input type="file" id="files" name="Files[]" multiple>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
+
+        const firebaseConfig = {
+  apiKey: "AIzaSyDJVhhVCZGgs857jytS6NV9l_7ENu_9H-4",
+  authDomain: "logi-c29ee.firebaseapp.com",
+  projectId: "logi-c29ee",
+  storageBucket: "logi-c29ee.appspot.com",
+  messagingSenderId: "943129350790",
+  appId: "1:943129350790:web:5f4daa628c58db59a7f707"
+};
+
+        const app = initializeApp(firebaseConfig);
+        const storageRef = getStorage(app);
+
+        document.getElementById('files').addEventListener('change', function() {
+            let file = this.files[0];
+            if (!file) {
+                console.log("No file selected.");
+                return;
+            }
+            let fileRef = ref(storageRef, 'Images/' + file.name);
+            uploadBytes(fileRef, file).then(response => {
+                console.log('Upload Success', response);
+                alert('Upload Success');
+            }).catch(error => {
+                console.log('Error', error);
+            });
+        });
+    </script>
+</body>
+</html>
